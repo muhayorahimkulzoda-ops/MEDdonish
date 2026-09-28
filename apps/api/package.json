@@ -1,0 +1,48 @@
+{
+  "name": "@meddonish/api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:tsx": "tsx watch --tsconfig tsconfig.json src/main.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "tsx --test src/common/runtime-secrets.spec.ts src/common/secret-manager.spec.ts src/common/crypto.spec.ts src/common/request-id.spec.ts src/common/webhook-freshness.spec.ts src/common/app-integrity.spec.ts src/modules/auth/phone.spec.ts src/modules/auth/password.spec.ts src/modules/testing/grading.spec.ts src/modules/payments/canonical.spec.ts src/modules/payments/providers/telegram-review.spec.ts src/modules/media/hls-file.spec.ts src/modules/media/delivery.spec.ts src/modules/catalog/offer.spec.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.6",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.1.6",
+    "@nestjs/swagger": "^11.2.0",
+    "@nestjs/throttler": "^6.4.0",
+    "@prisma/client": "^6.14.0",
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "multer": "^2.0.2",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.3",
+    "@types/multer": "^1.4.13",
+    "@types/node": "^24.3.0",
+    "@types/passport-jwt": "^4.0.1",
+    "prisma": "^6.14.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
+}

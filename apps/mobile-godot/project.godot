@@ -1,0 +1,28 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="MEDdonish"
+config/description="Medical learning client. Godot is the UI shell; video playback is native."
+config/icon="res://icon.png"
+run/main_scene="res://scenes/splash/Splash.tscn"
+config/features=PackedStringArray("4.4", "Mobile")
+
+[autoload]
+ApiClient="*res://autoload/ApiClient.gd"
+AuthManager="*res://autoload/AuthManager.gd"
+SessionManager="*res://autoload/SessionManager.gd"
+LocalizationManager="*res://autoload/LocalizationManager.gd"
+MEDdonishHost="*res://autoload/MEDdonishHost.gd"
+NotificationManager="*res://autoload/NotificationManager.gd"
+AppState="*res://autoload/AppState.gd"
+
+[display]
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
+[rendering]
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

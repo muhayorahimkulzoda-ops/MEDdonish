@@ -1,0 +1,20 @@
+---
+description: Ключи локализации RU/TG/EN
+globs: packages/localization/**/*.{ts,json}
+alwaysApply: false
+---
+
+# Localization
+
+Ключ вида `domain.action` (`course.buy`, `test.start`). Не хардкодить пользовательские строки в UI.
+
+На запуске обязательны `ru` и `tg`. `en` — полный набор ключей, даже если текст пока английский-заглушка.
+
+```ts
+// ❌ BAD
+<h1>Профессиональная медицинская образовательная платформа</h1>
+
+// ✅ GOOD
+<h1>{t('home.hero.subtitle')}</h1>
+```
+---

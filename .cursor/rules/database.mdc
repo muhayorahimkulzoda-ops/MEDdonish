@@ -1,0 +1,15 @@
+---
+description: Правила схемы PostgreSQL
+globs: apps/api/prisma/**/*.prisma
+alwaysApply: false
+---
+
+# Database
+
+- UUID primary keys. Телефон — E.164, unique.
+- Не хранить видео, PDF-байты и OTP plaintext.
+- `entitlements` — источник доступа; `payments` / `subscriptions` — история.
+- Вопросы живут в банке; попытка фиксирует набор в `test_attempt_questions`.
+- Оценки и порог завершения видео — в `settings`, не в UI-константах.
+- Новое поле = новая миграция Prisma.
+---

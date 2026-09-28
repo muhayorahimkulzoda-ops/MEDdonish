@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.meddonish.app",
+        "paths": ["/offer", "/courses/*", "/privacy", "/terms", "/account-deletion", "/checkout/*"]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["TEAMID.com.meddonish.app"]
+  }
+}

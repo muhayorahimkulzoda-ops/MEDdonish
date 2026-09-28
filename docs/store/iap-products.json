@@ -1,0 +1,32 @@
+{
+  "grantsAccess": false,
+  "type": "non_renewing_period",
+  "note": "Access is created only by Entitlement after payment.status = paid. Store and client never grant access.",
+  "products": [
+    {
+      "planCode": "month_1",
+      "durationDays": 30,
+      "googleSku": "meddonish.month_1",
+      "appleProductId": "meddonish.month_1",
+      "referenceName": "MEDdonish 1 month",
+      "reviewScreenshot": "docs/store/assets/feature-1024x500.png"
+    },
+    {
+      "planCode": "month_5",
+      "durationDays": 150,
+      "googleSku": "meddonish.month_5",
+      "appleProductId": "meddonish.month_5",
+      "referenceName": "MEDdonish 5 months",
+      "reviewScreenshot": "docs/store/assets/feature-1024x500.png"
+    },
+    {
+      "planCode": "year_1",
+      "durationDays": 365,
+      "googleSku": "meddonish.year_1",
+      "appleProductId": "meddonish.year_1",
+      "referenceName": "MEDdonish 1 year",
+      "recommended": true,
+      "reviewScreenshot": "docs/store/assets/feature-1024x500.png"
+    }
+  ]
+}

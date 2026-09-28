@@ -1,0 +1,25 @@
+---
+description: Соглашения NestJS API
+globs: apps/api/**/*.ts
+alwaysApply: false
+---
+
+# API
+
+- Версия: `/api/v1`. Каждый write-запрос — DTO + ValidationPipe.
+- Subscriber JWT и Admin JWT не смешивать в одном guard без проверки `tokenType`.
+- Entitlement + device проверять на backend, не на клиенте.
+- OTP и refresh token хранить как hash. OTP не возвращать в JSON на production.
+- Ошибки: `AppException` с машинным `code` (`ENTITLEMENT_EXPIRED`, `DEVICE_CONFLICT`).
+- Фоновые задачи (видео, JSON-импорт, push) — только через BullMQ, не в HTTP-handler.
+
+```ts
+// ❌ BAD — доступ по флагу с клиента
+if (body.paymentSuccessful) grantAccess();
+
+// ✅ GOOD
+if (payment.status === PaymentStatus.paid) {
+  await entitlements.activateFromPayment(payment.id);
+}
+```
+---

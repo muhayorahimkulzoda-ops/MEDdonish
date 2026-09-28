@@ -1,0 +1,19 @@
+{
+  "name": "@meddonish/localization",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ru": "./src/ru.json",
+    "./tg": "./src/tg.json",
+    "./en": "./src/en.json"
+  },
+  "scripts": {
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test src/keys.spec.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

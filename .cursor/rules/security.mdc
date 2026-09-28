@@ -1,0 +1,21 @@
+---
+description: Безопасность и секреты
+globs: apps/api/**/*.{ts,env*}
+alwaysApply: false
+---
+
+# Security
+
+- Rate limit на `/auth/request-otp` и `/auth/login`.
+- Admin: пароль + TOTP. Критичные действия — `audit_logs`.
+- Signed URL и playback token — короткоживущие, привязаны к user + device.
+- Не класть секреты в репозиторий. Использовать `.env.example` без значений.
+
+```ts
+// ❌ BAD
+logger.info('otp sent', { otp, accessToken });
+
+// ✅ GOOD
+logger.info('otp sent', { phoneMasked, requestId });
+```
+---

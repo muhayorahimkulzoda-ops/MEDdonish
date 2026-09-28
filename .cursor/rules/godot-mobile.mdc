@@ -1,0 +1,14 @@
+---
+description: Godot как UI-shell, не как плеер DRM
+globs: apps/mobile-godot/**/*
+alwaysApply: false
+---
+
+# Godot
+
+- Godot рисует UI и вызывает HTTPS API. Не подключать PostgreSQL.
+- Токены только через native secure storage (Keystore / Keychain).
+- Уроки: Android plugin → ExoPlayer/Media3 + Widevine; iOS plugin → AVPlayer + FairPlay.
+- Оплата внутри магазина: Play Billing / Apple IAP, затем entitlement на backend.
+- Watermark рисуется поверх native video layer, текст = user id сессии.
+---

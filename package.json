@@ -1,0 +1,32 @@
+{
+  "name": "meddonish",
+  "private": true,
+  "packageManager": "pnpm@10.14.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "db:migrate": "pnpm --filter @meddonish/api prisma:migrate",
+    "db:seed": "pnpm --filter @meddonish/api prisma:seed",
+    "db:generate": "pnpm --filter @meddonish/api prisma:generate",
+    "worker:video": "pnpm --filter @meddonish/video-worker dev"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "prisma",
+      "@prisma/client",
+      "@prisma/engines",
+      "bcrypt",
+      "esbuild",
+      "sharp"
+    ]
+  }
+}

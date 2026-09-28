@@ -1,0 +1,13 @@
+---
+description: Next.js web и admin
+globs: apps/{web,admin}/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Web / Admin
+
+- TypeScript + Tailwind. Строки только через `@meddonish/localization`.
+- Не дублировать правила оценок и цен — брать из API / `@meddonish/shared-types`.
+- Admin не встраивать в публичный `apps/web`.
+- Стили: белый, тёмно-синий, красный, серый. Медицинский, университетский, минималистичный.
+---

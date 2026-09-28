@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.meddonish.app",
+      "sha256_cert_fingerprints": [
+        "EA:A4:33:F4:3C:2D:15:09:CB:68:5C:89:0F:FB:3D:C7:8F:05:50:F5:60:D5:79:3F:9C:CB:A8:ED:1C:05:8C:5B"
+      ]
+    }
+  }
+]

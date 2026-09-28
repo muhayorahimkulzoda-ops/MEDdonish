@@ -1,0 +1,33 @@
+{
+	auto_https off
+	servers {
+		protocols h1 h2
+	}
+}
+
+:443 {
+	tls /certs/cert.pem /certs/key.pem
+	header {
+		-Server
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy no-referrer
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Cross-Origin-Opener-Policy same-origin
+		X-Permitted-Cross-Domain-Policies none
+	}
+	handle /api/* {
+		reverse_proxy host.docker.internal:3000
+	}
+	handle {
+		reverse_proxy host.docker.internal:3001
+	}
+}
+
+:8081 {
+	reverse_proxy host.docker.internal:3002
+}
+
+:8082 {
+	reverse_proxy host.docker.internal:3000
+}

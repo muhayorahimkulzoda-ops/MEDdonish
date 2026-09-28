@@ -1,0 +1,52 @@
+{
+  "app": "com.meddonish.app",
+  "dataSold": false,
+  "dataSharedForAds": false,
+  "securityPractices": {
+    "dataEncryptedInTransit": true,
+    "usersCanRequestDeletion": true,
+    "deletionUrl": "https://meddonish.com/account-deletion",
+    "independentSecurityReview": false
+  },
+  "collected": [
+    {
+      "category": "Personal info",
+      "type": "Phone number",
+      "purpose": ["App functionality", "Account management"],
+      "optional": false,
+      "ephemeral": false
+    },
+    {
+      "category": "Device or other IDs",
+      "type": "Device or other IDs",
+      "purpose": ["App functionality", "Fraud prevention, security, and compliance"],
+      "optional": false,
+      "ephemeral": false
+    },
+    {
+      "category": "App activity",
+      "type": "App interactions",
+      "purpose": ["App functionality", "Analytics"],
+      "note": "Learning progress and test results. Not medical records.",
+      "optional": false,
+      "ephemeral": false
+    },
+    {
+      "category": "Financial info",
+      "type": "Purchase history",
+      "purpose": ["App functionality"],
+      "note": "Store payment facts only. Play Billing processes the card. Client token does not grant access.",
+      "optional": false,
+      "ephemeral": false
+    }
+  ],
+  "notCollected": [
+    "Health and fitness",
+    "Medical records",
+    "Patient diagnoses",
+    "Precise location",
+    "Photos and videos",
+    "Contacts",
+    "SMS or call log"
+  ]
+}

@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: meddonish-postgres
+    environment:
+      POSTGRES_USER: meddonish
+      POSTGRES_PASSWORD: meddonish
+      POSTGRES_DB: meddonish
+    ports:
+      - "5433:5432"
+    volumes:
+      - meddonish_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meddonish"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: meddonish-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  edge:
+    image: caddy:2-alpine
+    container_name: meddonish-edge
+    ports:
+      - "8443:443"
+      - "8081:8081"
+      - "8082:8082"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./tls/cert.pem:/certs/cert.pem:ro
+      - ./tls/key.pem:/certs/key.pem:ro
+    profiles:
+      - https
+
+volumes:
+  meddonish_pg:

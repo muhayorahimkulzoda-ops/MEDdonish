@@ -1,0 +1,20 @@
+---
+description: Канонические правила архитектуры MEDdonish
+alwaysApply: true
+---
+
+# MEDdonish
+
+Канон: `docs/TECHNICAL_SPEC.md`. Стек: NestJS + PostgreSQL + Redis + Next.js + Godot UI-shell.
+
+- Один backend, одна БД, одни entitlements для Web / Android / iOS.
+- Клиенты не ходят в PostgreSQL и не знают object storage keys.
+- Защищённый контент: user active + device valid + entitlement active (кроме `is_free_preview`).
+- Платежный провайдер не выдаёт доступ. Доступ создаёт только Entitlement после `payment.status = paid` или admin grant.
+- Источники оплаты: `WEB_PAYMENT`, `GOOGLE_PLAY`, `APPLE_IAP`, `ADMIN`.
+- Видео: не раздавать 4–6 GB MP4 с API. HLS/DASH + DRM + CDN + signed playback session.
+- Godot не играет уроки через `VideoStreamPlayer`. Android = Media3/Widevine, iOS = AVPlayer/FairPlay.
+- Локализация только ключами. Не копировать приложения под язык.
+- Схема БД меняется только миграцией.
+- Не логировать OTP, access/refresh token, пароль, PIN, payment secrets, DRM keys.
+---

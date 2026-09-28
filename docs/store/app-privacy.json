@@ -1,0 +1,38 @@
+{
+  "bundleId": "com.meddonish.app",
+  "privacyPolicyUrl": "https://meddonish.com/privacy",
+  "userCanDeleteAccount": true,
+  "nutrition": [
+    {
+      "category": "Contact Info",
+      "type": "Phone Number",
+      "purposes": ["App Functionality", "Account Management"],
+      "linkedToUser": true,
+      "usedForTracking": false
+    },
+    {
+      "category": "Identifiers",
+      "type": "Device ID",
+      "purposes": ["App Functionality", "Fraud Prevention"],
+      "linkedToUser": true,
+      "usedForTracking": false
+    },
+    {
+      "category": "Usage Data",
+      "type": "Product Interaction",
+      "purposes": ["App Functionality", "Analytics"],
+      "linkedToUser": true,
+      "usedForTracking": false,
+      "note": "Lesson progress and test grades. Not health records."
+    },
+    {
+      "category": "Purchases",
+      "type": "Purchase History",
+      "purposes": ["App Functionality"],
+      "linkedToUser": true,
+      "usedForTracking": false
+    }
+  ],
+  "tracking": false,
+  "notCollected": ["Health", "Sensitive Info", "Location", "Contacts", "User Content"]
+}

@@ -1,0 +1,5 @@
+Contact: mailto:security@meddonish.com
+Preferred-Languages: ru, en, tg
+Canonical: https://meddonish.com/.well-known/security.txt
+Policy: https://meddonish.com/privacy
+Expires: 2027-08-23T00:00:00.000Z
