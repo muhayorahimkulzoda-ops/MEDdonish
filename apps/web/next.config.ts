@@ -43,8 +43,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 const config: NextConfig = {
-  const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+
 
   output: isGitHubPages ? 'export' : undefined,
 
