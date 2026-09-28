@@ -46,7 +46,6 @@ if (process.env.NODE_ENV === 'production') {
 const config: NextConfig = {
   const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
-const config: NextConfig = {
   output: isGitHubPages ? 'export' : undefined,
 
   basePath: isGitHubPages ? '/MEDDonish' : '',
