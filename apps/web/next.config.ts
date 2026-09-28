@@ -44,6 +44,57 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const config: NextConfig = {
+  const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+
+const config: NextConfig = {
+  output: isGitHubPages ? 'export' : undefined,
+
+  basePath: isGitHubPages ? '/MEDDonish' : '',
+  assetPrefix: isGitHubPages ? '/MEDDonish/' : '',
+
+  images: {
+    unoptimized: true,
+  },
+
+  poweredByHeader: false,
+
+  transpilePackages: [
+    '@meddonish/localization',
+    '@meddonish/api-client',
+    '@meddonish/shared-types',
+    'pdfjs-dist',
+  ],
+
+  ...(isGitHubPages
+    ? {}
+    : {
+        async rewrites() {
+          const api =
+            process.env.API_PUBLIC_URL ?? 'http://127.0.0.1:3000';
+
+          return [
+            {
+              source: '/api/v1/:path*',
+              destination: `${api}/api/v1/:path*`,
+            },
+          ];
+        },
+
+        async headers() {
+          return [
+            { source: '/:path*', headers: securityHeaders },
+            {
+              source: '/.well-known/apple-app-site-association',
+              headers: [{ key: 'Content-Type', value: 'application/json' }],
+            },
+            {
+              source: '/.well-known/assetlinks.json',
+              headers: [{ key: 'Content-Type', value: 'application/json' }],
+            },
+          ];
+        },
+      }),
+};
   poweredByHeader: false,
   transpilePackages: [
     '@meddonish/localization',
