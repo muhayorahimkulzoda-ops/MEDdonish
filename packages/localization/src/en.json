@@ -522,6 +522,7 @@
   "payment.holder": "Cardholder name",
   "payment.copy": "Copy",
   "payment.copied": "Copied",
+  "payment.note": "Note",
   "admin.approve": "Yes",
   "admin.reject": "No",
   "admin.enabled": "Enabled",

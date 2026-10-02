@@ -521,7 +521,9 @@
   "payment.card": "Рақами карта",
   "payment.holder": "Ному насаб",
   "payment.copy": "Нусха",
-  "payment.copied": "Нусха шуд",
+  "payment.copied": "Нусха шуд",                               
+  "payment.note": "Эзоҳ",
+
   "admin.approve": "Ҳа",
   "admin.reject": "Не",
   "admin.enabled": "Фаъол",

@@ -522,6 +522,7 @@
   "payment.holder": "Имя и фамилия",
   "payment.copy": "Копировать",
   "payment.copied": "Скопировано",
+  "payment.note": "Примечание",
   "admin.approve": "Ҳа",
   "admin.reject": "Не",
   "admin.enabled": "Включено",

@@ -25,7 +25,7 @@ const securityHeaders = [
       "media-src 'self' blob: http://127.0.0.1:3000 http://localhost:3000 https:",
       isDev
         ? "connect-src 'self' http://127.0.0.1:3000 http://localhost:3000 http://127.0.0.1:8081 http://localhost:8081 http://127.0.0.1:8082 http://localhost:8082 https://localhost:8443 ws: wss: https: https://accounts.google.com https://oauth2.googleapis.com https://appleid.apple.com"
-        : "connect-src 'self' http://127.0.0.1:3000 http://localhost:3000 https://localhost:8443 https: https://accounts.google.com https://oauth2.googleapis.com https://appleid.apple.com",
+        : "connect-src 'self' https: https://accounts.google.com https://oauth2.googleapis.com https://appleid.apple.com",
       "frame-src 'self' blob: http://127.0.0.1:3000 http://localhost:3000 https://accounts.google.com https://appleid.apple.com",
       "object-src 'none'",
       "worker-src 'self' blob:",
@@ -44,6 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+
 const config: NextConfig = {
   output: isGitHubPages ? 'export' : undefined,
 
@@ -92,31 +93,6 @@ const config: NextConfig = {
           ];
         },
       }),
-};
-  poweredByHeader: false,
-  transpilePackages: [
-    '@meddonish/localization',
-    '@meddonish/api-client',
-    '@meddonish/shared-types',
-    'pdfjs-dist',
-  ],
-  async rewrites() {
-    const api = process.env.API_PUBLIC_URL ?? 'http://127.0.0.1:3000';
-    return [{ source: '/api/v1/:path*', destination: `${api}/api/v1/:path*` }];
-  },
-  async headers() {
-    return [
-      { source: '/:path*', headers: securityHeaders },
-      {
-        source: '/.well-known/apple-app-site-association',
-        headers: [{ key: 'Content-Type', value: 'application/json' }],
-      },
-      {
-        source: '/.well-known/assetlinks.json',
-        headers: [{ key: 'Content-Type', value: 'application/json' }],
-      },
-    ];
-  },
 };
 
 export default config;
