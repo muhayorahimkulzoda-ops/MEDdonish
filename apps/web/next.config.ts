@@ -44,12 +44,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const pagesBase = (process.env.BASE_PATH || '/MEDdonish').replace(/\/$/, '');
 
 const config: NextConfig = {
   output: isGitHubPages ? 'export' : undefined,
 
-  basePath: isGitHubPages ? '/MEDDonish' : '',
-  assetPrefix: isGitHubPages ? '/MEDDonish/' : '',
+  basePath: isGitHubPages ? pagesBase : '',
+  assetPrefix: isGitHubPages ? `${pagesBase}/` : '',
 
   images: {
     unoptimized: true,

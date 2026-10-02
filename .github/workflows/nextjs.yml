@@ -36,6 +36,7 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - name: Setup GitHub Pages
+        id: pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
@@ -46,6 +47,7 @@ jobs:
       - name: Build Next.js
         env:
           GITHUB_PAGES: "true"
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: pnpm --dir apps/web build
 
       - name: Upload artifact
