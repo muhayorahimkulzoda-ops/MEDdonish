@@ -92,6 +92,39 @@ export async function adminUpload<T>(path: string, body: FormData): Promise<T> {
   return payload as T;
 }
 
+export function adminUploadProgress<T>(
+  path: string,
+  body: FormData,
+  onProgress?: (percent: number) => void,
+): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `${getApiBase()}${path}`);
+    xhr.setRequestHeader('Accept', 'application/json');
+    const token = getToken();
+    if (token) xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+    xhr.upload.onprogress = (event) => {
+      if (!onProgress || !event.lengthComputable) return;
+      onProgress(Math.round((event.loaded / event.total) * 100));
+    };
+    xhr.onload = () => {
+      let payload: { message?: string; code?: string } = {};
+      try {
+        payload = JSON.parse(xhr.responseText || '{}') as { message?: string; code?: string };
+      } catch {
+        payload = {};
+      }
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(payload as T);
+        return;
+      }
+      reject(new AdminApiError(payload.message ?? `Upload failed: ${xhr.status}`, xhr.status, payload.code));
+    };
+    xhr.onerror = () => reject(new AdminApiError('Upload failed', 0));
+    xhr.send(body);
+  });
+}
+
 export async function adminUploadPut<T>(path: string, body: FormData): Promise<T> {
   const headers = new Headers();
   headers.set('Accept', 'application/json');

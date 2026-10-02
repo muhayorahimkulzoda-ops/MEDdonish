@@ -106,7 +106,7 @@ export function CourseProgramSlide({ courseId, onClose }: { courseId: string; on
         setEditing(null);
         return;
       }
-      onClose();
+      onClose?.();
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);

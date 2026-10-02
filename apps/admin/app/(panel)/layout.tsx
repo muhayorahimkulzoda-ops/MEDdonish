@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { AdminNav } from '../../components/AdminNav';
+import { AdminToastHost } from '../../components/AdminToast';
 import { adminRequest, getToken, getWebOrigin, markAdminSession, setToken } from '../../lib/api';
 import { t } from '../../lib/i18n';
 
@@ -63,6 +64,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
         </div>
       </aside>
       <main>{children}</main>
+      <AdminToastHost />
     </div>
   );
 }
