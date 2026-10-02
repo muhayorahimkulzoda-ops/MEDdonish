@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next';
 import { CATALOG_COURSES } from '../lib/catalog-courses';
 import { absoluteUrl } from '../lib/seo';
 
+export const dynamic = 'force-static';
+
 const PUBLIC_PATHS = [
   '/',
   '/courses',

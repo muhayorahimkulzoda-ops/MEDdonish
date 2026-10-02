@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { SITE_BASE_PATH, siteUrl } from '../lib/seo';
 
+export const dynamic = 'force-static';
+
 const PRIVATE_PATHS = [
   '/login',
   '/register',
