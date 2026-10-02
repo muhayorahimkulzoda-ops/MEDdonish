@@ -48,6 +48,7 @@ jobs:
         env:
           GITHUB_PAGES: "true"
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: https://muhayorahimkulzoda-ops.github.io
         run: pnpm --dir apps/web build
 
       - name: Upload artifact

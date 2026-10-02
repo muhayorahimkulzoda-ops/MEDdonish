@@ -75,9 +75,9 @@ export function OnboardingGate({ children }: { children: React.ReactNode }) {
     setStep('app');
   }
 
-  if (step === 'app') return <>{children}</>;
-
   return (
+    <>
+    {step === 'app' ? null : (
     <div className="gate" data-step={step}>
       <div className="gate-aurora" aria-hidden="true" />
       <div className="gate-orbs" aria-hidden="true">
@@ -97,7 +97,7 @@ export function OnboardingGate({ children }: { children: React.ReactNode }) {
       {step === 'language' ? (
         <div className="gate-panel">
           <p className="gate-kicker">{t('onboarding.kicker')}</p>
-          <h1 className="gate-title">{t('language.choose')}</h1>
+          <h2 className="gate-title">{t('language.choose')}</h2>
           <div className="lang-grid">
             <button type="button" className="lang-card lang-card-tg" onClick={() => chooseLanguage('tg')}>
               <span className="lang-flag" aria-hidden="true">
@@ -145,5 +145,8 @@ export function OnboardingGate({ children }: { children: React.ReactNode }) {
         {locale}
       </span>
     </div>
+    )}
+    {children}
+    </>
   );
 }

@@ -1,7 +1,7 @@
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import { translate } from '@meddonish/localization';
 import { OnboardingGate } from '../components/OnboardingGate';
+import { rootMetadata, websiteJsonLd } from '../lib/seo';
 import './globals.css';
 import './app-shell.css';
 
@@ -10,10 +10,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: 'MEDdonish',
-  description: translate('tg', 'home.app.subtitle'),
-};
+export const metadata = rootMetadata();
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -26,6 +23,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="tg" data-theme="light" className={inter.className}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
         <OnboardingGate>{children}</OnboardingGate>
       </body>
     </html>
