@@ -5,7 +5,7 @@
   "scripts": {
     "copy:pdf-worker": "node -e \"require('fs').copyFileSync(require.resolve('pdfjs-dist/build/pdf.worker.min.mjs'), require('path').join('public','pdf.worker.min.mjs'))\"",
     "dev": "pnpm copy:pdf-worker && next dev --port 3001",
-    "build": "pnpm copy:pdf-worker && next build",
+    "build": "pnpm copy:pdf-worker && node ./scripts/next-build.mjs",
     "start": "next start --port 3001",
     "lint": "tsc --noEmit"
   },
